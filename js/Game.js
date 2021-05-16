@@ -30,20 +30,28 @@ class Game {
     }
 
     car1 = createSprite(100,200);
+    car1.addImage(car1Img);
     car2 = createSprite(300,200);
+    car2.addImage(car2Img);
     car3 = createSprite(500,200);
+    car3.addImage(car3Img);
     car4 = createSprite(700,200);
+    car4.addImage(car4Img);
     cars = [car1, car2, car3, car4];
   }
 
   play(){
     form.hide();
 
+    
     Player.getPlayerInfo();
     
     if(allPlayers !== undefined){
       //var display_position = 100;
-      
+      background("red");
+      image(track,0,-displayHeight*4,displayWidth,displayHeight*5);
+
+
       //index of the array
       var index = 0;
 
@@ -78,7 +86,20 @@ class Game {
       player.distance +=10
       player.update();
     }
+    if(player.distance>3760){
+      gameState=2;
 
+    }
     drawSprites();
   }
+
+  End(){
+
+    textSize(140);
+    fill("black");
+    text("Game Ended",displayWidth/2-200,-displayHeight*4);
+  }
+  
+  
 }
+
